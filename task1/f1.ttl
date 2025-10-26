@@ -1,0 +1,154 @@
+@prefix : <http://example.org/f1#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://example.org/f1#> .
+
+[ rdf:type owl:Ontology ;
+   rdfs:label "Формула 1"
+ ] .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/f1#выступаетЗа
+:выступаетЗа rdf:type owl:ObjectProperty ;
+             owl:inverseOf <http://www.co-ode.org/ontologies/ont.owl#подписалиГонщика> ;
+             rdfs:domain :Гонщик ;
+             rdfs:range :Команда ;
+             rdfs:label "выступает за" .
+
+
+###  http://example.org/f1#используетДвигательОт
+:используетДвигательОт rdf:type owl:ObjectProperty ;
+                       owl:inverseOf <http://www.co-ode.org/ontologies/ont.owl#поставляютДвигатели> ;
+                       rdfs:domain :Команда ;
+                       rdfs:range :ПоставщикДвигателей ;
+                       rdfs:label "использует двигатель от" .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#подписалиГонщика
+<http://www.co-ode.org/ontologies/ont.owl#подписалиГонщика> rdf:type owl:ObjectProperty ;
+                                                            rdfs:label "подписали гонщика" .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#поставляютДвигатели
+<http://www.co-ode.org/ontologies/ont.owl#поставляютДвигатели> rdf:type owl:ObjectProperty ;
+                                                               rdfs:label "поставляют двигатели" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/f1#Гонщик
+:Гонщик rdf:type owl:Class ;
+        rdfs:label "Гонщик" .
+
+
+###  http://example.org/f1#Команда
+:Команда rdf:type owl:Class ;
+         rdfs:label "Команда" .
+
+
+###  http://example.org/f1#ПоставщикДвигателей
+:ПоставщикДвигателей rdf:type owl:Class ;
+                     rdfs:label "Поставщик двигателей" .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/f1#АстонМартин
+:АстонМартин rdf:type owl:NamedIndividual ,
+                      :Команда ;
+             :используетДвигательОт :МерседесДвигатели ;
+             rdfs:label "Aston Martin Aramco" .
+
+
+###  http://example.org/f1#ДжорджРасселл
+:ДжорджРасселл rdf:type owl:NamedIndividual ,
+                        :Гонщик ;
+               :выступаетЗа :Мерседес ;
+               rdfs:label "Джордж Расселл" .
+
+
+###  http://example.org/f1#ЛьюисХэмилтон
+:ЛьюисХэмилтон rdf:type owl:NamedIndividual ,
+                        :Гонщик ;
+               :выступаетЗа :Феррари ;
+               rdfs:label "Льюис Хэмилтон" .
+
+
+###  http://example.org/f1#МаксФерстаппен
+:МаксФерстаппен rdf:type owl:NamedIndividual ,
+                         :Гонщик ;
+                :выступаетЗа :РедБуллРейсинг ;
+                rdfs:label "Макс Ферстаппен" .
+
+
+###  http://example.org/f1#Мерседес
+:Мерседес rdf:type owl:NamedIndividual ,
+                   :Команда ;
+          :используетДвигательОт :МерседесДвигатели ;
+          rdfs:label "Mercedes-AMG Petronas" .
+
+
+###  http://example.org/f1#МерседесДвигатели
+:МерседесДвигатели rdf:type owl:NamedIndividual ,
+                            :ПоставщикДвигателей ;
+                   rdfs:label "Mercedes-Benz" .
+
+
+###  http://example.org/f1#РедБуллРейсинг
+:РедБуллРейсинг rdf:type owl:NamedIndividual ,
+                         :Команда ;
+                :используетДвигательОт :ХондаРБПТ ;
+                rdfs:label "Red Bull Racing" .
+
+
+###  http://example.org/f1#Феррари
+:Феррари rdf:type owl:NamedIndividual ,
+                  :Команда ;
+         :используетДвигательОт :ФеррариДвигатели ;
+         rdfs:label "Scuderia Ferrari" .
+
+
+###  http://example.org/f1#ФеррариДвигатели
+:ФеррариДвигатели rdf:type owl:NamedIndividual ,
+                           :ПоставщикДвигателей ;
+                  rdfs:label "Ferrari" .
+
+
+###  http://example.org/f1#ХондаРБПТ
+:ХондаРБПТ rdf:type owl:NamedIndividual ,
+                    :ПоставщикДвигателей ;
+           rdfs:label "Honda RBPT" .
+
+
+###  http://example.org/f1#ШарльЛеклер
+:ШарльЛеклер rdf:type owl:NamedIndividual ,
+                      :Гонщик ;
+             :выступаетЗа :Феррари ;
+             rdfs:label "Шарль Леклер" .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#КимиАнтонелли
+<http://www.co-ode.org/ontologies/ont.owl#КимиАнтонелли> rdf:type owl:NamedIndividual ,
+                                                                  :Гонщик ;
+                                                         :выступаетЗа :Мерседес ;
+                                                         rdfs:label "Кими Антонелли" .
+
+
+###  http://www.co-ode.org/ontologies/ont.owl#ЮкиТсунода
+<http://www.co-ode.org/ontologies/ont.owl#ЮкиТсунода> rdf:type owl:NamedIndividual ,
+                                                               :Гонщик ;
+                                                      :выступаетЗа :РедБуллРейсинг ;
+                                                      rdfs:label "Юки Тсунода" .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
