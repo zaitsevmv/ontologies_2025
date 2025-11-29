@@ -34,35 +34,21 @@ owl:transitiveProperty rdf:type owl:AnnotationProperty .
 
 ###  http://example.org/family#ИмеетПотомка
 :ИмеетПотомка rdf:type owl:ObjectProperty ;
-              owl:inverseOf :ИмеетПредка ;
-              rdfs:domain :Человек ;
-              rdfs:range :Человек ;
-              owl:transitiveProperty "true"^^xsd:boolean .
+              owl:inverseOf :ИмеетПредка .
 
 
 ###  http://example.org/family#ИмеетПредка
-:ИмеетПредка rdf:type owl:ObjectProperty ;
-             rdfs:domain :Человек ;
-             rdfs:range :Человек ;
-             owl:transitiveProperty "true"^^xsd:boolean .
-
-
-###  http://example.org/family#ИмеетРебёнка
-:ИмеетРебёнка rdf:type owl:ObjectProperty ;
-              rdfs:subPropertyOf :ИмеетПотомка ;
-              owl:inverseOf :ИмеетРодителя ;
-              rdfs:domain :Человек ;
-              rdfs:range :Человек .
+:ИмеетПредка rdf:type owl:ObjectProperty ,
+                      owl:TransitiveProperty .
 
 
 ###  http://example.org/family#ИмеетРодителя
 :ИмеетРодителя rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :ИмеетПредка ;
+               rdf:type owl:FunctionalProperty ,
+                        owl:IrreflexiveProperty ;
                rdfs:domain :Человек ;
-               rdfs:range :Человек ;
-               owl:asymmetricProperty "true"^^xsd:boolean ;
-               owl:functionalProperty "true"^^xsd:boolean ;
-               owl:irreflexiveProperty "true"^^xsd:boolean .
+               rdfs:range :Человек .
 
 
 #################################################################
