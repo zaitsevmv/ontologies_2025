@@ -45,10 +45,10 @@ owl:transitiveProperty rdf:type owl:AnnotationProperty .
 ###  http://example.org/family#ИмеетРодителя
 :ИмеетРодителя rdf:type owl:ObjectProperty ;
                rdfs:subPropertyOf :ИмеетПредка ;
-               rdf:type owl:FunctionalProperty ,
-                        owl:IrreflexiveProperty ;
                rdfs:domain :Человек ;
-               rdfs:range :Человек .
+               rdfs:range :Человек ;
+               rdf:type owl:FunctionalProperty ,
+                        owl:IrreflexiveProperty .
 
 
 #################################################################
